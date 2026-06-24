@@ -4,7 +4,7 @@ This template provides a minimal setup to get React working in Vite with HMR and
 
 ---
 
-## 🚀 Getting Started (Installation & Usage)
+## Getting Started (Installation & Usage)
 
 Follow these steps to install the dependencies and run the project locally using `npm`.
 
