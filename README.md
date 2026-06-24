@@ -4,50 +4,50 @@ This template provides a minimal setup to get React working in Vite with HMR and
 
 ---
 
-## 🚀 Hướng dẫn Cài đặt & Khởi chạy (Getting Started)
+## 🚀 Getting Started (Installation & Usage)
 
-Dưới đây là các bước để cài đặt dependencies và chạy project ở môi trường local bằng `npm`.
+Follow these steps to install the dependencies and run the project locally using `npm`.
 
-### 1. Cài đặt các gói phụ thuộc (Installation)
-Mở terminal tại thư mục gốc của dự án và chạy câu lệnh sau:
+### 1. Installation
+Open your terminal in the project's root directory and run:
 ```bash
 npm install
 
 ```
 
-### 2. Chạy ứng dụng (Development Mode)
+### 2. Run the Development Server
 
-Để khởi động server phát triển, hãy chạy câu lệnh:
+To start the local development server, run:
 
 ```bash
 npm run dev
 
 ```
 
-> 🌐 **Địa chỉ truy cập (URL & Port mặc định của Vite):**
+> 🌐 **Default URL & Port:**
 > * **Local:** `http://localhost:5173/`
-> * *Lưu ý: Nếu port `5173` đã bị chiếm dụng bởi ứng dụng khác, Vite sẽ tự động đổi sang port tiếp theo (ví dụ: `5174`). Bạn hãy kiểm tra chính xác đường dẫn hiển thị ở Terminal sau khi chạy lệnh nhé.*
+> * *Note: If port `5173` is already in use by another application, Vite will automatically switch to the next available port (e.g., `5174`). Please check your terminal output for the exact URL.*
 > 
 > 
 
-### 3. Các câu lệnh khác (Other Scripts)
+### 3. Other Available Scripts
 
-* **Build ứng dụng cho Production:**
+* **Build for Production:**
 ```bash
 npm run build
 
 ```
 
 
-* **Xem trước bản Build ở Local (Preview):**
+* **Preview Production Build Locally:**
 ```bash
 npm run preview
 
 ```
 
 
-*(Mặc định chạy tại link: `http://localhost:4173/`)*
-* **Kiểm tra lỗi Code (Linting):**
+*(Runs by default at `http://localhost:4173/`)*
+* **Lint the Project:**
 ```bash
 npm run lint
 
@@ -57,7 +57,7 @@ npm run lint
 
 ---
 
-## Plugins chính thức hiện có
+## Official Plugins
 
 Currently, two official plugins are available:
 
