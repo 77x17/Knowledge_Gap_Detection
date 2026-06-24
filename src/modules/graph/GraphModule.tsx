@@ -241,7 +241,7 @@ export const GraphModule: React.FC<GraphModuleProps> = ({
         {/* Knowledge Graph Renderer */}
         <div className="graph-main-canvas card">
           <div className="graph-canvas-header">
-            <h3>🌐 Bản Đồ Khoảng Cách Kiến Thức (Knowledge Graph)</h3>
+            <h3>Bản Đồ Khoảng Cách Kiến Thức (Knowledge Graph)</h3>
             <button onClick={fetchGraphAndMastery} className="btn-icon" title="Làm mới">
               <RefreshCw size={14} />
             </button>
@@ -273,11 +273,11 @@ export const GraphModule: React.FC<GraphModuleProps> = ({
 
           {/* Improvement progression chart */}
           <div className="progression-chart-card card">
-            <h4>📈 Tiến độ cải thiện điểm số</h4>
+            <h4>Tiến độ cải thiện điểm số</h4>
             {renderTrendChart()}
             {quizAttempts.length > 1 && (
               <p className="chart-insight mt-3">
-                🎉 Điểm số trung bình của bạn tăng{' '}
+                Điểm số trung bình của bạn tăng{' '}
                 <strong>
                   {quizAttempts[quizAttempts.length - 1].score - quizAttempts[0].score}%
                 </strong>{' '}
@@ -290,7 +290,7 @@ export const GraphModule: React.FC<GraphModuleProps> = ({
 
       {/* Gap Priority Table */}
       <div className="gap-table-card card mt-4">
-        <h3>📋 Danh sách phân tích chi tiết & Đề xuất ôn tập</h3>
+        <h3>Danh sách phân tích chi tiết & Đề xuất ôn tập</h3>
         
         <table className="gap-priority-table mt-3">
           <thead>

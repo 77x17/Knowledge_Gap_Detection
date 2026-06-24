@@ -27,6 +27,245 @@
   color-scheme: dark;
 }
 
+/* ============================================================
+   LIGHT THEME - Khi user chọn giao diện Sáng
+   Ghi đè tất cả CSS variables bằng bảng màu sáng
+   Kích hoạt bởi: document.documentElement.setAttribute('data-theme', 'light')
+   ============================================================ */
+[data-theme="light"] {
+  --bg: #f4f6fa;
+  --card-bg: #ffffff;
+  --text: #4a5568;
+  --text-h: #1a202c;
+  --border: #e2e8f0;
+  --accent: #7c3aed; /* Tím đậm hơn cho nền sáng */
+  --accent-glow: rgba(124, 58, 237, 0.3);
+  --accent-light: #8b5cf6;
+  --accent-bg: rgba(124, 58, 237, 0.06);
+  --success: #059669;
+  --success-bg: rgba(5, 150, 105, 0.08);
+  --warning: #d97706;
+  --warning-bg: rgba(217, 119, 6, 0.08);
+  --danger: #dc2626;
+  --danger-bg: rgba(220, 38, 38, 0.06);
+  --code-bg: #f1f5f9;
+  --shadow: rgba(0, 0, 0, 0.08) 0 4px 12px -2px, rgba(0, 0, 0, 0.05) 0 2px 6px -2px;
+  color-scheme: light;
+}
+
+/* Light theme - Override cho các element có hardcoded dark colors */
+[data-theme="light"] body {
+  background-color: var(--bg);
+}
+[data-theme="light"] .app-header {
+  background-color: #ffffff;
+  border-bottom-color: var(--border);
+}
+[data-theme="light"] .header-nav {
+  background-color: #f1f5f9;
+  border-color: var(--border);
+}
+[data-theme="light"] .auth-wrapper {
+  background: radial-gradient(circle at center, #eef2f7 0%, #f4f6fa 100%);
+}
+[data-theme="light"] .auth-card {
+  background-color: #ffffff;
+  border-color: var(--border);
+}
+[data-theme="light"] .auth-logo-section .subtitle {
+  color: #718096;
+}
+[data-theme="light"] .role-option-card {
+  background-color: #f8fafc;
+  border-color: var(--border);
+}
+[data-theme="light"] .role-option-card:hover {
+  border-color: #cbd5e1;
+  background-color: #f1f5f9;
+}
+[data-theme="light"] .role-option-card .option-text p {
+  color: #718096;
+}
+[data-theme="light"] .auth-footer {
+  color: #a0aec0;
+}
+[data-theme="light"] .stepper-card-item {
+  background-color: #ffffff;
+}
+[data-theme="light"] .explanation-block {
+  background-color: #f8fafc;
+  border-color: var(--border);
+}
+[data-theme="light"] .expanded-option-cell {
+  background-color: #f8fafc;
+  border-color: var(--border);
+}
+[data-theme="light"] .user-info .role-tag {
+  background-color: #f1f5f9;
+  border-color: var(--border);
+  color: var(--text);
+}
+/* Light theme - Input fields */
+[data-theme="light"] input[type="text"],
+[data-theme="light"] input[type="email"],
+[data-theme="light"] input[type="password"],
+[data-theme="light"] textarea,
+[data-theme="light"] select {
+  background-color: #ffffff;
+  border-color: var(--border);
+  color: var(--text-h);
+}
+
+[data-theme="light"] input[type="text"]::placeholder,
+[data-theme="light"] input[type="email"]::placeholder,
+[data-theme="light"] input[type="password"]::placeholder,
+[data-theme="light"] textarea::placeholder {
+  color: #a0aec0;
+}
+
+/* Light theme - plan-textarea */
+[data-theme="light"] .plan-textarea {
+  background-color: #ffffff;
+  border-color: var(--border);
+  color: var(--text-h);
+}
+
+/* Light theme - các vùng có hardcoded dark bg */
+[data-theme="light"] .file-upload-zone,
+[data-theme="light"] .role-option-card,
+[data-theme="light"] .mode-card,
+[data-theme="light"] .option-item-card,
+[data-theme="light"] .grid-cell-nav,
+[data-theme="light"] .proposed-topic-item-card,
+[data-theme="light"] .attachment-badge-card,
+[data-theme="light"] .question-bank-card,
+[data-theme="light"] .input-icon-container input {
+  background-color: #f8fafc;
+}
+
+[data-theme="light"] .btn-secondary {
+  background-color: #f1f5f9;
+  border-color: var(--border);
+  color: var(--text-h);
+}
+[data-theme="light"] .btn-secondary:hover {
+  background-color: #e2e8f0;
+}
+
+/* Light theme - code/tag bg */
+[data-theme="light"] .badge-sub-topic,
+[data-theme="light"] .subtopic-tag,
+[data-theme="light"] .node-insight,
+[data-theme="light"] .kg-inspector-card,
+[data-theme="light"] .upload-progress-card,
+[data-theme="light"] .expanded-option-cell {
+  background-color: #f1f5f9;
+}
+
+/* Light theme - modal footer */
+[data-theme="light"] .modal-footer {
+  background-color: #f8fafc;
+}
+
+/* Light theme - table header */
+[data-theme="light"] .gap-priority-table th {
+  background-color: #f1f5f9;
+}
+
+/* Light theme - advisor box */
+[data-theme="light"] .advisor-advice-box {
+  background-color: #f8fafc;
+}
+
+/* Light theme - mode-card hover */
+[data-theme="light"] .mode-card:hover {
+  border-color: #cbd5e1;
+  background-color: #f1f5f9;
+}
+
+/* Light theme - btn-count (count-selection-row) */
+[data-theme="light"] .btn-count {
+  background-color: #f1f5f9;
+  border-color: var(--border);
+  color: var(--text);
+}
+[data-theme="light"] .btn-count:hover {
+  background-color: #e2e8f0;
+  border-color: #cbd5e1;
+  color: var(--text-h);
+}
+
+/* Light theme - expanded-option-cell correct text */
+[data-theme="light"] .expanded-option-cell.correct {
+  color: #065f46;
+}
+
+/* Light theme - kg-container panels */
+[data-theme="light"] .kg-graph-panel {
+  background-color: #f8fafc;
+  border-color: var(--border);
+}
+
+/* Light theme - trend-chart-container */
+[data-theme="light"] .trend-chart-container {
+  background-color: #f8fafc;
+  border-color: var(--border);
+}
+
+/* Light theme - option-item-card */
+[data-theme="light"] .option-item-card {
+  background-color: #f8fafc;
+  border-color: var(--border);
+}
+[data-theme="light"] .option-item-card:hover {
+  border-color: #cbd5e1;
+  background-color: #f1f5f9;
+}
+[data-theme="light"] .option-item-card.selected {
+  background-color: var(--accent-bg);
+  border-color: var(--accent);
+}
+[data-theme="light"] .option-item-card.correct {
+  background-color: rgba(5, 150, 105, 0.08);
+  border-color: var(--success);
+  color: #065f46;
+}
+[data-theme="light"] .option-item-card.incorrect {
+  background-color: rgba(220, 38, 38, 0.06);
+  border-color: var(--danger);
+  color: #7f1d1d;
+}
+[data-theme="light"] .option-item-card.disabled {
+  opacity: 0.4;
+}
+
+/* Light theme - option-bullet */
+[data-theme="light"] .option-bullet {
+  background-color: #f1f5f9;
+  border-color: var(--border);
+  color: var(--text-h);
+}
+
+/* Light theme - grid-cell-nav */
+[data-theme="light"] .grid-cell-nav {
+  background-color: #f8fafc;
+  border-color: var(--border);
+  color: var(--text);
+}
+[data-theme="light"] .grid-cell-nav:hover {
+  background-color: #f1f5f9;
+  border-color: #cbd5e1;
+}
+[data-theme="light"] .grid-cell-nav.answered {
+  background-color: var(--accent-bg);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+[data-theme="light"] .grid-cell-nav.current {
+  background-color: #f8fafc;
+  box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.3);
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -320,6 +559,42 @@ input[type="text"]:focus, textarea:focus, select:focus {
   box-shadow: 0 0 0 3px rgba(170, 59, 255, 0.25);
 }
 
+input[type="email"], textarea, select {
+  font-family: var(--sans);
+  background-color: #12141a;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.6rem 0.8rem;
+  color: var(--text-h);
+  font-size: 0.9rem;
+  width: 100%;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+input[type="email"]:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(170, 59, 255, 0.25);
+}
+
+input[type="password"], textarea, select {
+  font-family: var(--sans);
+  background-color: #12141a;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.6rem 0.8rem;
+  color: var(--text-h);
+  font-size: 0.9rem;
+  width: 100%;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+input[type="password"]:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(170, 59, 255, 0.25);
+}
+
 .form-group {
   display: flex;
   flex-direction: column;
@@ -452,6 +727,11 @@ input[type="text"]:focus, textarea:focus, select:focus {
   gap: 0.5rem;
   cursor: pointer;
 }
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
 .brand-icon {
   color: var(--accent);
   filter: drop-shadow(0 0 4px var(--accent));
@@ -528,10 +808,20 @@ input[type="text"]:focus, textarea:focus, select:focus {
   background-color: var(--warning-bg);
 }
 .btn-logout {
-  color: #ef4444;
+  color: var(--danger);
 }
 .btn-logout:hover {
   background-color: var(--danger-bg);
+}
+/* Nút chuyển đổi Theme Sáng / Tối */
+.btn-theme-toggle {
+  color: var(--accent-light);
+  transition: all 0.25s ease;
+}
+.btn-theme-toggle:hover {
+  color: var(--accent);
+  background-color: var(--accent-bg);
+  transform: rotate(20deg);
 }
 .app-main-content {
   flex-grow: 1;
@@ -548,6 +838,7 @@ input[type="text"]:focus, textarea:focus, select:focus {
   justify-content: center;
   padding: 2rem 1.5rem;
   background: radial-gradient(circle at center, #131622 0%, #0b0c10 100%);
+  transition: background 0.3s ease;
 }
 .auth-card {
   background-color: var(--card-bg);
@@ -583,12 +874,27 @@ input[type="text"]:focus, textarea:focus, select:focus {
 .auth-error-msg {
   background-color: var(--danger-bg);
   border: 1px solid rgba(239, 68, 68, 0.25);
-  color: #ef4444;
+  color: var(--danger);
   font-size: 0.85rem;
-  padding: 0.6rem;
-  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
   margin-bottom: 1.25rem;
   text-align: left;
+  white-space: pre-line;
+  line-height: 1.6;
+}
+/* Thông báo thành công - Màu sáng nổi bật để user nhận biết */
+.auth-success-msg {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(5, 150, 105, 0.1) 100%);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  color: var(--success);
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.85rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.25rem;
+  text-align: center;
+  animation: fadeIn 0.4s ease forwards;
 }
 .role-options-grid {
   display: grid;

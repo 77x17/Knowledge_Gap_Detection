@@ -1,6 +1,6 @@
 import React from 'react';
 import type { User } from '../../core/types';
-import { Brain, BookOpen, Award, Layers, LogOut, RefreshCw } from 'lucide-react';
+import { Brain, BookOpen, Award, Layers, LogOut, RefreshCw, Sun, Moon } from 'lucide-react';
 import { mockDb } from '../../services/mock/MockDB';
 
 interface HeaderProps {
@@ -8,13 +8,18 @@ interface HeaderProps {
   activeTab: string;
   setActiveTab: (tab: string) => void;
   onLogout: () => void;
+  // Props cho chức năng chuyển đổi theme Sáng/Tối
+  theme: 'dark' | 'light';
+  onToggleTheme: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
   currentUser,
   activeTab,
   setActiveTab,
-  onLogout
+  onLogout,
+  theme,
+  onToggleTheme
 }) => {
   const handleResetDb = () => {
     if (window.confirm('Bạn có chắc chắn muốn reset toàn bộ tiến trình học tập và dữ liệu Mock?')) {
@@ -57,6 +62,15 @@ export const Header: React.FC<HeaderProps> = ({
       )}
 
       <div className="header-actions">
+        {/* Nút chuyển đổi Theme Sáng / Tối */}
+        <button
+          onClick={onToggleTheme}
+          title={theme === 'dark' ? 'Chuyển sang giao diện Sáng' : 'Chuyển sang giao diện Tối'}
+          className="btn-icon btn-theme-toggle"
+        >
+          {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+        </button>
+
         {currentUser && (
           <div className="user-profile">
             <div className="user-info">

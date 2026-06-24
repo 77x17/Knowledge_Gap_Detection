@@ -174,7 +174,7 @@ export const PlanModule: React.FC<PlanModuleProps> = ({ onGraphInitialized }) =>
         <div className="plan-step-grid">
           {/* Main JD and Inputs Area */}
           <div className="plan-main-card card">
-            <h3>📋 Thông tin mục tiêu ôn luyện</h3>
+            <h3>Thông tin mục tiêu ôn luyện</h3>
             <p className="section-desc">Mô tả công việc (Job Description) hoặc các chủ đề chuyên sâu bạn mong muốn đánh giá và phát hiện lỗ hổng.</p>
             
             <div className="form-group mt-4">
@@ -197,7 +197,7 @@ export const PlanModule: React.FC<PlanModuleProps> = ({ onGraphInitialized }) =>
 
           {/* Attachments Sidebar */}
           <div className="plan-sidebar-card card">
-            <h3>📎 Tài liệu đi kèm (Tùy chọn)</h3>
+            <h3>Tài liệu đi kèm (Tùy chọn)</h3>
             <p className="section-desc">Hỗ trợ trích xuất giáo trình PDF/Docx, URL bài giảng để sinh câu hỏi trắc nghiệm sát với thực tế.</p>
             
             {/* File Upload zone */}
@@ -270,7 +270,7 @@ export const PlanModule: React.FC<PlanModuleProps> = ({ onGraphInitialized }) =>
           {/* Topics Proposed list */}
           <div className="plan-main-card card">
             <div className="card-header-with-badge">
-              <h3>🎯 Bản đồ chủ đề kiến thức đề xuất</h3>
+              <h3>Bản đồ chủ đề kiến thức đề xuất</h3>
               <span className="badge-advisor">AI Advisor</span>
             </div>
             
@@ -309,7 +309,7 @@ export const PlanModule: React.FC<PlanModuleProps> = ({ onGraphInitialized }) =>
 
           {/* Add more info sidebar to loop updates (Step 2) */}
           <div className="plan-sidebar-card card">
-            <h3>🔄 Bổ sung thông tin môn học</h3>
+            <h3>Bổ sung thông tin môn học</h3>
             <p className="section-desc">Học sinh có thể cập nhật thêm mục tiêu hoặc các topic phụ để AI cấu trúc lại bản đồ ôn luyện.</p>
 
             <div className="form-group mt-4">

@@ -11,6 +11,9 @@ import { Header } from './shared/components/Header';
 import { Lock, ArrowRight } from 'lucide-react';
 import './App.css';
 
+// Key lưu theme vào localStorage để ghi nhớ lựa chọn của user
+const THEME_STORAGE_KEY = 'kg_detection_theme';
+
 function App() {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [activeTab, setActiveTab] = useState<string>('plan');
@@ -20,6 +23,24 @@ function App() {
   
   // Quiz results feedback state
   const [lastQuizResult, setLastQuizResult] = useState<UpdateKnowledgeGraphResponse | null>(null);
+
+  // --- THEME STATE ---
+  // Đọc theme từ localStorage, mặc định là 'dark'
+  const [theme, setTheme] = useState<'dark' | 'light'>(() => {
+    const saved = localStorage.getItem(THEME_STORAGE_KEY);
+    return (saved === 'light' || saved === 'dark') ? saved : 'dark';
+  });
+
+  // Áp dụng theme lên thẻ <html> mỗi khi theme thay đổi
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem(THEME_STORAGE_KEY, theme);
+  }, [theme]);
+
+  // Hàm toggle theme Sáng <-> Tối
+  const handleToggleTheme = () => {
+    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
+  };
 
   useEffect(() => {
     // Check if user is logged in
@@ -37,13 +58,12 @@ function App() {
 
   const handleLoginSuccess = (user: User) => {
     setCurrentUser(user);
+    // Đăng nhập thành công => chuyển về trang chủ (plan)
+    setActiveTab('plan');
     // Auto restore active KG if any
     const dbData = mockDb.get();
     if (dbData.knowledgeGraphId) {
       setKnowledgeGraphId(dbData.knowledgeGraphId);
-      setActiveTab('graph'); // redirect to dashboard if they already have a graph
-    } else {
-      setActiveTab('plan'); // redirect to wizard
     }
   };
 
@@ -134,6 +154,8 @@ function App() {
         activeTab={activeTab}
         setActiveTab={setActiveTab}
         onLogout={handleLogout}
+        theme={theme}
+        onToggleTheme={handleToggleTheme}
       />
       <main className="app-main-content">
         {renderTabContent()}

@@ -215,7 +215,7 @@ export const BankModule: React.FC<BankModuleProps> = ({ currentUser }) => {
                         {q.difficulty.toUpperCase()}
                       </span>
                       <span className="badge-usage-count" title="Số lượt câu hỏi đã xuất hiện trong bài thi">
-                        📊 Sử dụng: {usageCount} lượt
+                        Sử dụng: {usageCount} lượt
                       </span>
                     </div>
                     <h4 className="question-text-title mt-2 font-medium text-h">
