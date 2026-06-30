@@ -3,10 +3,10 @@ import type { IPlanService } from '../core/interfaces/IPlanService';
 import type { IGraphService } from '../core/interfaces/IGraphService';
 import type { IQuizService } from '../core/interfaces/IQuizService';
 
-import { MockAuthService } from './mock/MockAuthService';
-import { MockPlanService } from './mock/MockPlanService';
-import { MockGraphService } from './mock/MockGraphService';
-import { MockQuizService } from './mock/MockQuizService';
+import { HttpAuthService } from './http/HttpAuthService';
+import { HttpPlanService } from './http/HttpPlanService';
+import { HttpGraphService } from './http/HttpGraphService';
+import { HttpQuizService } from './http/HttpQuizService';
 
 class ServiceRegistry {
   public authService: IAuthService;
@@ -15,14 +15,10 @@ class ServiceRegistry {
   public quizService: IQuizService;
 
   constructor() {
-    // When migrating to real backend API, simply swap these instances
-    // with your real HTTP/REST service implementations, e.g.:
-    // this.authService = new HttpAuthService();
-    
-    this.authService = new MockAuthService();
-    this.planService = new MockPlanService();
-    this.graphService = new MockGraphService();
-    this.quizService = new MockQuizService();
+    this.authService = new HttpAuthService();
+    this.planService = new HttpPlanService();
+    this.graphService = new HttpGraphService();
+    this.quizService = new HttpQuizService();
   }
 }
 

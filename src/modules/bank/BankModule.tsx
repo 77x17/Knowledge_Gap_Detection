@@ -112,7 +112,7 @@ export const BankModule: React.FC<BankModuleProps> = ({ currentUser }) => {
       {/* Header and export controls */}
       <div className="bank-header-card card flex justify-between items-center flex-wrap gap-4">
         <div>
-          <h3>📚 Ngân Hàng Câu Hỏi Hệ Thống</h3>
+          <h3>Ngân Hàng Câu Hỏi Hệ Thống</h3>
           <p className="section-desc">Danh sách câu hỏi trắc nghiệm đã sinh. Giảng viên và nhà tuyển dụng có thể lọc và xuất đề thi trắc nghiệm.</p>
         </div>
 

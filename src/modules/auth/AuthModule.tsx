@@ -1,16 +1,12 @@
 import React, { useState } from 'react';
 import type { User } from '../../core/types';
-import { mockDb } from '../../services/mock/MockDB';
+import services from '../../services/ServiceRegistry';
 import { Brain, UserCheck, Layers } from 'lucide-react';
 import { Spinner } from '../../shared/components/Spinner';
 
 interface AuthModuleProps {
   onLoginSuccess: (user: User) => void;
 }
-
-// CẤU HÌNH ĐƯỜNG DẪN BACKEND API
-// Thay đổi giá trị này khi bạn deploy hoặc chạy backend ở cổng khác
-const BACKEND_URL = 'http://localhost:8000';
 
 export const AuthModule: React.FC<AuthModuleProps> = ({ onLoginSuccess }) => {
   // --- STATE QUẢN LÝ FORM ---
@@ -51,84 +47,20 @@ export const AuthModule: React.FC<AuthModuleProps> = ({ onLoginSuccess }) => {
     setError(null);
     setSuccessMsg(null);
 
-    // Xác định Endpoint và Body gửi lên tương ứng với hành động Đăng ký / Đăng nhập
-    const endpoint = isRegister 
-      ? `${BACKEND_URL}/api/v1/public/auth/register` 
-      : `${BACKEND_URL}/api/v1/public/auth/login`;
-
-    const requestBody = isRegister
-      ? { username, email, password }
-      : { username, password };
-
     try {
-      // 2. Gửi request POST lên backend API
-      const response = await fetch(endpoint, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(requestBody),
-      });
-
-      const resData = await response.json();
-      console.log('Login response:', resData); // tạm thêm để debug
-
-      // 3. Xử lý lỗi từ Backend (Lỗi Validation 422 hoặc lỗi nghiệp vụ)
-      if (!response.ok) {
-        // Xử lý lỗi Validation 422 của FastAPI (hoặc các framework tương đương)
-        if (response.status === 422 && resData.detail) {
-          if (Array.isArray(resData.detail)) {
-            // Hiển thị từng lỗi validation trên dòng riêng cho user dễ đọc
-            const validationErrors = resData.detail
-              .map((err: any) => {
-                // err.loc: vị trí trường lỗi (ví dụ: ["body", "password"])
-                // err.msg: nội dung lỗi (ví dụ: "ensure this value has at least 8 characters")
-                const field = err.loc[err.loc.length - 1]; // Lấy tên trường cuối cùng
-                return `• ${field}: ${err.msg}`;
-              })
-              .join('\n');
-            throw new Error(validationErrors);
-          }
-          throw new Error(resData.detail || 'Lỗi kiểm tra dữ liệu đầu vào.');
-        }
-        
-        // Lấy thông báo lỗi được định nghĩa trong schema (nếu có)
-        throw new Error(resData.error || resData.message || 'Yêu cầu thất bại');
-      }
-
-      // 4. Kiểm tra mã code trả về từ API (ví dụ code != 0 nghĩa là lỗi nghiệp vụ)
-      if (resData.code !== 200 && resData.code !== 0) {
-        throw new Error(resData.error || resData.message || 'Đã có lỗi xảy ra phía server');
-      }
-
-      // 5. Xử lý kết quả thành công tùy theo hành động
       if (isRegister) {
-        // === ĐĂNG KÝ THÀNH CÔNG ===
-        // Chuyển về form Đăng nhập, hiển thị thông báo thành công màu sáng
+        if (services.authService.register) {
+          await services.authService.register(username, email, password);
+        } else {
+          throw new Error('Chức năng đăng ký chưa được hỗ trợ');
+        }
         setSuccessMsg('Đăng ký tài khoản thành công! Vui lòng đăng nhập để tiếp tục.');
         setIsRegister(false); // Chuyển sang form Login
         setPassword(''); // Xóa password để user nhập lại
-        // Giữ lại username để user không phải nhập lại
       } else {
-        // === ĐĂNG NHẬP THÀNH CÔNG ===
-        // Ánh xạ dữ liệu trả về từ backend tương thích với interface User của frontend
-        const backendUser = resData.data.user;
-        const loggedInUser: User = {
-          id: String(backendUser.id),
-          username: backendUser.username,
-          role: role, // Sử dụng vai trò mà người dùng đã chọn trên giao diện
-          createdAt: new Date().toISOString()
-        };
-
-        // Lưu trữ user vào MockDB để các Module/Service khác vẫn hoạt động đồng bộ
-        mockDb.update((db) => {
-          db.user = loggedInUser;
-        });
-
-        // Gọi hàm callback thông báo đăng nhập thành công => chuyển về trang chủ
+        const loggedInUser = await services.authService.login(username, role, password);
         onLoginSuccess(loggedInUser);
       }
-
     } catch (err: any) {
       console.error('Auth Error:', err);
       setError(err?.message || 'Không thể kết nối đến máy chủ backend. Vui lòng kiểm tra lại backend.');

@@ -3,7 +3,7 @@ import services from '../../services/ServiceRegistry';
 import type { QuizQuestion, UserAnswerSubmission, UpdateKnowledgeGraphResponse } from '../../core/types';
 import { Spinner } from '../../shared/components/Spinner';
 import { Modal } from '../../shared/components/Modal';
-import { Play, Timer, RefreshCw, AlertTriangle, CheckCircle, XCircle, ArrowLeft, ArrowRight, Save, Eye } from 'lucide-react';
+import { Timer, RefreshCw, AlertTriangle, CheckCircle, XCircle, ArrowLeft, ArrowRight, Save, Eye } from 'lucide-react';
 
 interface QuizModuleProps {
   knowledgeGraphId: string;
